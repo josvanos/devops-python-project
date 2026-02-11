@@ -42,4 +42,21 @@ def get_student_by_id(student_id):  # noqa: E501
     """
     return get_by_id(student_id)
 
+def get_student_average_grade(student_id):
+    """gets student's average grade
+
+        Returns a single grade
+
+        :param student_id: the uid
+        :type student_id:
+
+        :rtype: Float
+        """
+    student = get_by_id(student_id)
+    grades = [grade_record.get("grade") for grade_record in student.get('grade_records')]
+    if not grades:
+        return 'no grades', 404
+    average_grade = sum(grades) / len(grades)
+    return average_grade
+
 

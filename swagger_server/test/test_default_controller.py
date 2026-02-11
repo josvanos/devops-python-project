@@ -48,6 +48,17 @@ class TestDefaultController(BaseTestCase):
         self.assert200(response,
                        'Response body is : ' + response.data.decode('utf-8'))
 
+    def test_student_average_grade(self):
+        """Test case for get_student_by_id
+
+        gets student
+        """
+        response = self.client.open(
+            '/tutorial/1.0.0/student/{student_id}/average_grade'.format(student_id='38400000-8cf0-11bd-b23e-10b96e4ef00d'),
+            method='GET')
+        self.assert200(response,
+                       'Response body is : ' + response.data.decode('utf-8'))
+
 
 if __name__ == '__main__':
     import unittest
