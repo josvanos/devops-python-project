@@ -53,6 +53,9 @@ def get_student_average_grade(student_id):
         :rtype: Float
         """
     student = get_by_id(student_id)
+    if isinstance(student, tuple):
+        return student
+
     grades = [grade_record.get("grade") for grade_record in student.get('grade_records')]
     if not grades:
         return 'no grades', 404
